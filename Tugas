@@ -1,0 +1,69 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <cstdlib>
+#include <cmath>
+
+using namespace std;
+
+string toString (double);
+int toInt (string);
+double toDouble (string);
+
+int main() {
+    string domisili, status, anak, ka;
+    string mks, m, s, ada, tidakada;
+    int harga;
+    
+    cout << "masukan harga:  " << endl;
+    cin >> harga;
+    if (harga > 1.102019) {
+        cout << "wilayah pembelian  :" << endl;
+        cin >> domisili;
+        if (domisili == string("mks")) {
+            cout << "status pernikahan:" << endl;
+            cin >> status;
+            if (status == string("menikah")) {
+                cout << "memiliki anak :" << endl;
+                cin >> anak;
+                if (anak == string("ada")) {
+                    harga = (int) (harga * 0.75);
+                    cout << "diskon 75%" << endl;
+                } else {
+                    harga = (int) (harga * 0.5);
+                    cout << "diskon 50%" << endl;
+                    cin >> ka;
+                    if (ka == string("ada")) {
+                    } else {
+                        harga = (int) (harga * 0.1);
+                        cout << "diskon 10%" << endl;
+                    }
+                }
+            } else {
+                cout << "masukan ka :" << endl;
+                cin >> ka;
+                if (ka == string("ada")) {
+                    harga = (int) (harga * 0.25);
+                    cout << "diskon 25%" << endl;
+                }
+            }
+        } else {
+            harga = (int) (harga * 0.1);
+            cout << "diskon up +10%" << endl;
+        }
+    }
+}
+
+string toString (double value) {
+    stringstream temp;
+    temp << value;
+    return temp.str();
+}
+
+int toInt (string text) {
+    return atoi(text.c_str());
+}
+
+double toDouble (string text) {
+    return atof(text.c_str());
+}
